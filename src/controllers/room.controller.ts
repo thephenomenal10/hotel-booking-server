@@ -1,5 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { RoomService } from "../services/room.service";
+import AppError from "../utils/appError";
+import logger from "../logger";
 
 export class RoomController {
   private roomService: RoomService;
@@ -42,6 +44,13 @@ export class RoomController {
   ): Promise<void> {
     const { roomsCount } = req.body;
     try {
+      if (parseInt(roomsCount) > 5) {
+        throw new AppError({
+          statusCode: 400,
+          message: "Maximum 5 rooms allowed to book.",
+        });
+      }
+
       const bookedRooms = await this.roomService.bookRooms(roomsCount);
       res
         .status(200)
