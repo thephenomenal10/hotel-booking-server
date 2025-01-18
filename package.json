@@ -12,6 +12,7 @@
     "nodemon": "^3.1.9",
     "pino": "^9.6.0",
     "pino-pretty": "^13.0.0",
+    "rimraf": "^6.0.1",
     "ts-node": "^10.9.2"
   },
   "devDependencies": {
@@ -24,6 +25,8 @@
     "typescript": "^5.7.3"
   },
   "scripts": {
-    "dev": "nodemon -r dotenv/config ./src/server.ts"
+    "dev": "nodemon -r dotenv/config ./src/server.ts",
+    "prod": "yarn run build && node -r dotenv/config ./dist/server.js",
+    "build": "rimraf ./dist && tsc && cp ./.env ./dist/.env"
   }
 }
