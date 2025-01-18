@@ -36,6 +36,7 @@
     /* Completeness */
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
   },
+  "typeRoots": ["./node_modules/@types"],
   "exclude": ["node_modules", "dist", "coverage"],
   "include": ["./src/**/*.ts", "base32.d.ts", "telerivet.d.ts"]
 }

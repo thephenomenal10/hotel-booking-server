@@ -27,7 +27,7 @@
   },
   "scripts": {
     "dev": "nodemon -r dotenv/config ./src/server.ts",
-    "prod": "yarn run build && node -r dotenv/config ./dist/server.js",
+    "prod": "nodemon ./dist/server.js",
     "build": "yarn install && rimraf ./dist && tsc"
   }
 }
