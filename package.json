@@ -26,8 +26,12 @@
     "typescript": "^5.7.3"
   },
   "scripts": {
-    "dev": "nodemon -r dotenv/config ./src/server.ts",
-    "prod": "nodemon ./dist/server.js",
-    "build": "yarn install && rimraf ./dist && tsc"
+    "start": "node ./dist/server.js",
+    "prestart": "yarn build",
+    "start:dev": "nodemon -r dotenv/config --watch ./src --ext ts --exec ts-node ./src/server.ts",
+    "build": "rimraf ./dist && tsc",
+    "lint": "eslint ./src --ext .ts",
+    "test": "jest",
+    "clean": "rimraf ./dist"
   }
 }
